@@ -73,6 +73,66 @@ const iframeStyles = `
             margin: 1.5rem 0;
             font-style: italic;
         }
+        details {
+            background: #fcfcf8;
+            border: 3px solid #0f172a;
+            box-shadow: 5px 5px 0px #0f172a;
+            margin-top: 1rem;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+        details[open] {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px #0f172a;
+        }
+        summary {
+            padding: 1rem;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid transparent;
+            background: #fcfcf8;
+            transition: background 0.1s ease;
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        summary:hover {
+            background: #facc15;
+        }
+        details[open] summary {
+            border-bottom: 3px solid #0f172a;
+            background: #ffffff;
+        }
+        summary::after {
+            content: '+';
+            font-size: 1.3rem;
+            font-weight: 900;
+            background: #ffffff;
+            border: 2px solid #0f172a;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 0px #0f172a;
+        }
+        summary:hover::after {
+            background: #ffffff;
+        }
+        details[open] summary::after {
+            content: '−';
+            background: #facc15;
+        }
+        .details-content {
+            padding: 1.25rem;
+            background: #ffffff;
+            font-size: 1rem;
+            color: #0f172a;
+        }
         img {
             max-width: 100%;
             height: auto;
