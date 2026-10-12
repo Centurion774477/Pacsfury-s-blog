@@ -71,6 +71,39 @@ body {
     text-transform: uppercase;
 }
 
+.blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.blog-tag {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border: 2px solid var(--border-color);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.blog-tag-long-text {
+    background: #bfdbfe;
+}
+
+.blog-tag-gravel {
+    background: #bbf7d0;
+}
+
+.blog-tag-not-that-long {
+    background: #fbcfe8;
+}
+
+.blog-tag-announcement {
+    background: #c6ffa9;
+}
+
 .back-link {
     color: var(--text-primary);
     text-decoration: none;
@@ -106,4 +139,74 @@ iframe {
     border-radius: 0px;
     display: block;
     background: #ffffff;
+}
+
+details {
+    background: var(--bg-card);
+    border: 3px solid var(--border-color);
+    box-shadow: 5px 5px 0px var(--border-color);
+    margin-top: 1rem;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+details[open] {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0px var(--border-color);
+}
+
+summary {
+    padding: 1rem;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid transparent;
+    background: var(--bg-card);
+    transition: background 0.1s ease;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary:hover {
+    background: var(--accent-yellow);
+}
+
+details[open] summary {
+    border-bottom: 3px solid var(--border-color);
+    background: var(--bg-card-hover);
+}
+
+summary::after {
+    content: '+';
+    font-size: 1.3rem;
+    font-weight: 900;
+    background: var(--bg-card-hover);
+    border: 2px solid var(--border-color);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 0px var(--border-color);
+}
+
+summary:hover::after {
+    background: #ffffff;
+}
+
+details[open] summary::after {
+    content: '−';
+    background: var(--accent-yellow);
+}
+
+.details-content {
+    padding: 1.25rem;
+    background: #ffffff;
+    font-size: 1rem;
+    color: var(--text-primary);
 }

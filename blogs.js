@@ -1,7 +1,46 @@
 export const BLOGS = [
     {
-        "title": "Announcment: New UI Redesign",
+        "title": "Adding Tags",
+        "date": "2026-10-12",
+        "tags": ["Announcement"],
+        "content": `
+            <sub>Adding tags to blog entries</sub>
+            <p>As I announced in the last long text, I was planning to add <i>tags</i> to every blog entry. In this short announcement, I will explain the current tags and what they are in a FAQ section.</p>
+
+            <h2>Current List of Tags</h2>
+
+            <i>This list won't be updated when new tags are added: these are only the original tags.</i>
+            
+            <ul>
+                <li><b>Gravel</b>: Related to the development of the Gravel programming language.</li>
+                <li><b>Long Text</b>: It's a long text—a text about thoughts and progress.</li>
+                <li><b>Not That Long</b>: A long text that is not actually that long (combined with the Long Text tag).</li>
+                <li><b>Announcement</b>: Announcing changes to the web.</li>
+            </ul>
+
+            <h2>FAQ</h2>
+
+            <details>
+                <summary><b>What Are Tags?</b></summary>
+                <div class="details-content"><p>Tags are a way to organize all the blogs. Every blog has zero or more tags, which are displayed on its entry.</p></div>
+            </details>
+
+            <details>
+                <summary><b>Can I Filter Blogs With Tags?</b></summary>
+                <div class="details-content"><p>Not yet, but this may come in the future.</p></div>
+            </details>
+
+            <details>
+                <summary><b>Will New Tags Be Added Constantly?</b></summary>
+                <div class="details-content"><p>New tags will be added when some posts actually need them. We don't want to create too many or too few.</p></div>
+            </details>
+
+        `
+    },
+    {
+        "title": "New UI Redesign",
         "date": "2026-10-03",
+        "tags": ["Announcement"],
         "content": `
             <h2>New UI Announcement</h2>
 
@@ -33,8 +72,9 @@ export const BLOGS = [
         `
     },
     {
-        "title": "Long Text: The Art Of Always Making Better UI And UX",
+        "title": "The Art Of Always Making Better UI And UX",
         "date": "2026-10-03",
+        "tags": ["Long Text", "Not that long"],
         "content": `
             <p>I decided to make this long text about UI and UX changes because I'm planning on changing the UI of this blog web, just as adding some more features. In this post, I won't talk much about how I want the new UI (I will make another post for that), but I'll talk about why it is so great to make better UIs during the app lifetime, and how UX should not be changed too abruptly.</p>
             
@@ -128,8 +168,9 @@ export const BLOGS = [
         `
     },
     {
-        "title": "My First Long Text: Why Your Code Is Always Evolving With You",
+        "title": "Why Your Code Is Always Evolving With You",
         "date": "2026-08-21",
+        "tags": ["Long Text", "Not that long"],
         "content": `
 
             <p>I wanted to make something more interesting for the first ever "<b>My Long Text</b>" (whose name was inspired by Ilkka's Long Texts from Supercell).</p>
@@ -165,6 +206,7 @@ export const BLOGS = [
     {
         "title": "What I learned with Gravel",
         "date": "2026-07-24",
+        "tags": ["Gravel"],
         "content": `
             <p>In the last blog, I talked about how the first Gravel release went. Now, after some new releases, I look back to see what I learned from Gravel.</p>
 
@@ -187,6 +229,7 @@ export const BLOGS = [
     {
         "title": "Releasing first version of Gravel",
         "date": "2026-07-01",
+        "tags": ["Gravel"],
         "content": `
             <h2>The Objective</h2>
             <p>With Gravel I wanted to make a fast and reliable programming language, while also being
@@ -241,6 +284,7 @@ export const BLOGS = [
     {
         "title": "Why AI will (not) kill developers",
         "date": "2026-06-28",
+        "tags": [],
         "content": `
             <p>A lot of people are currently claiming that you shouldn't code, because AI can code better and programmers and developers will no longer be needed. In this blog, I will explain to you my opinion about this, and try to convince you that coding is still worth it.</p>
             <h2>"AI will code faster and better than most developers"</h2>
@@ -259,6 +303,7 @@ export const BLOGS = [
     {
         "title": "How Do Computers Work? pt 1",
         "date": "2026-06-27",
+        "tags": [],
         "content": `
             <p>I have created two computers so far, and I think it's a good idea to explain how they work under the hood, as they are quite simple.</p>
             <h2>ALU and Registers</h2>
@@ -274,6 +319,7 @@ export const BLOGS = [
     {
         "title": "Hello, World!",
         "date": "2026-06-26",
+        "tags": ["Announcement"],
         "content": `
             <p>Welcome to my first blog! On this webpage, I will be putting different ideas, post-mortems, projects, etc. This will be my place to talk about my ideas.</p>
             <h2>How does this work?</h2>

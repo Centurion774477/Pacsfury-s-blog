@@ -1,5 +1,12 @@
 import { BLOGS } from './blogs.js';
 
+const tagClasses = {
+    'Long Text': 'blog-tag-long-text',
+    'Gravel': 'blog-tag-gravel',
+    'Not that long': 'blog-tag-not-that-long',
+    'Announcement': 'blog-tag-announcement'
+};
+
 const iframeStyles = `
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -92,6 +99,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h1 class="blog-title">${blog.title || 'No title'}</h1>
                 <p class="blog-date">${blog.date || 'No date'}</p>
             `;
+
+            const tagsElement = document.createElement('div');
+            tagsElement.className = 'blog-tags';
+            tagsElement.setAttribute('aria-label', 'Tags');
+            blog.tags.forEach(tag => {
+                const tagElement = document.createElement('span');
+                tagElement.className = `blog-tag ${tagClasses[tag] || ''}`;
+                tagElement.textContent = tag;
+                tagsElement.appendChild(tagElement);
+            });
+            postElement.appendChild(tagsElement);
 
             postElement.addEventListener('click', () => {
                 container.innerHTML = '';
