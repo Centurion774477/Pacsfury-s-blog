@@ -147,8 +147,10 @@ const iframeStyles = `
 
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('blog-container');
+    const searchContainer = document.getElementById('search-container');
 
     function renderFeed() {
+        searchContainer.hidden = false;
         container.innerHTML = '';
 
         BLOGS.forEach(blog => {
@@ -172,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
             postElement.appendChild(tagsElement);
 
             postElement.addEventListener('click', () => {
+                searchContainer.hidden = true;
                 container.innerHTML = '';
 
                 const backButton = document.createElement('div');
