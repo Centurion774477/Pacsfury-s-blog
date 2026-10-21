@@ -210,3 +210,11 @@ details[open] summary::after {
     font-size: 1rem;
     color: var(--text-primary);
 }
+
+#search-container {
+    padding-right: 30px;
+}
+
+#random-post-container {
+    padding-top: 10px;
+}
