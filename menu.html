@@ -10,6 +10,25 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <div id="search-container">
+            <h2><label for="search-input">Search for a post by tags</label></h2>
+            <input type="text" id="search-input" placeholder="Announcement">
+            <button id="search-button">Search</button>
+
+            <button id="reset-view">Reset</button>
+
+            <!--
+            This has nothing to do with the search.
+            I'm just doing it to cheat the display into rendering the button below the search
+            instead of to the right of it
+            -->
+            <div id="random-post-container">
+                <button id="random-post">Read a random post</button>
+            </div>
+        </div>
+
+
+
         <div id="blog-container"></div>
 
         <script type="module" src="menu.js"></script>
