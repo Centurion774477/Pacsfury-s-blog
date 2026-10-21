@@ -27,7 +27,7 @@ export const BLOGS = [
 
             <details>
                 <summary><b>Can I Filter Blogs With Tags?</b></summary>
-                <div class="details-content"><p>Not yet, but this may come in the future.</p></div>
+                <div class="details-content"><p>Not yet, but this may come in the future.</p><p>Note at 26-10-21: Centurion added this functionality</p></div>
             </details>
 
             <details>
