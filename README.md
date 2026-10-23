@@ -15,6 +15,7 @@ The engine is completely vanilla:
 + 🟡 JS, no frameworks
 
 The file `menu.js` searches all blogs, displays and shows the content when you click the card.
+Each blog has a stable `id` in `blogs.js`. Open a blog directly by adding its ID to the URL, for example `menu.html?blog=adding-tags` or `menu.html?blog=art-better-uix`.
 
 ```
 main/

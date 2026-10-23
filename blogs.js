@@ -1,5 +1,6 @@
 export const BLOGS = [
     {
+        "id": "adding-tags",
         "title": "Adding Tags",
         "date": "2026-10-12",
         "tags": ["Announcement"],
@@ -9,9 +10,11 @@ export const BLOGS = [
 
             <h2>Current List of Tags</h2>
 
+            <br>
             <i>This list won't be updated when new tags are added: these are only the original tags.</i>
             
             <ul>
+                <br>
                 <li><b>Gravel</b>: Related to the development of the Gravel programming language.</li>
                 <li><b>Long Text</b>: It's a long text—a text about thoughts and progress.</li>
                 <li><b>Not That Long</b>: A long text that is not actually that long (combined with the Long Text tag).</li>
@@ -38,6 +41,7 @@ export const BLOGS = [
         `
     },
     {
+        "id": "new-ui-redesign",
         "title": "New UI Redesign",
         "date": "2026-10-03",
         "tags": ["Announcement"],
@@ -72,6 +76,7 @@ export const BLOGS = [
         `
     },
     {
+        "id": "art-better-uix",
         "title": "The Art Of Always Making Better UI And UX",
         "date": "2026-10-03",
         "tags": ["Long Text", "Not that long"],
@@ -168,6 +173,7 @@ export const BLOGS = [
         `
     },
     {
+        "id": "code-evolves-with-you",
         "title": "Why Your Code Is Always Evolving With You",
         "date": "2026-08-21",
         "tags": ["Long Text", "Not that long"],
@@ -204,6 +210,7 @@ export const BLOGS = [
         `
     },
     {
+        "id": "learning-gravel",
         "title": "What I learned with Gravel",
         "date": "2026-07-24",
         "tags": ["Gravel"],
@@ -227,6 +234,7 @@ export const BLOGS = [
         `
     },
     {
+        "id": "first-gravel-release",
         "title": "Releasing first version of Gravel",
         "date": "2026-07-01",
         "tags": ["Gravel"],
@@ -282,6 +290,7 @@ export const BLOGS = [
         `
     },
     {
+        "id": "ai-kill-developers",
         "title": "Why AI will (not) kill developers",
         "date": "2026-06-28",
         "tags": [],
@@ -301,6 +310,7 @@ export const BLOGS = [
             `
     },
     {
+        "id": "how-computers-work-pt-1",
         "title": "How Do Computers Work? pt 1",
         "date": "2026-06-27",
         "tags": [],
@@ -317,6 +327,7 @@ export const BLOGS = [
         `
     },
     {
+        "id": "hello-world",
         "title": "Hello, World!",
         "date": "2026-06-26",
         "tags": ["Announcement"],

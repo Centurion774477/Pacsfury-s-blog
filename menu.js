@@ -149,6 +149,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('blog-container');
     const searchContainer = document.getElementById('search-container');
 
+    function setBlogInUrl(blogId) {
+        const url = new URL(window.location.href);
+
+        if (blogId) {
+            url.searchParams.set('blog', blogId);
+        } else {
+            url.searchParams.delete('blog');
+        }
+
+        window.history.replaceState(null, '', url);
+    }
+
     function renderFeed() {
         searchContainer.hidden = false;
         container.innerHTML = '';
@@ -174,40 +186,90 @@ document.addEventListener('DOMContentLoaded', () => {
             postElement.appendChild(tagsElement);
 
             postElement.addEventListener('click', () => {
-                searchContainer.hidden = true;
-                container.innerHTML = '';
-
-                const backButton = document.createElement('div');
-                backButton.className = 'back-link';
-                backButton.innerHTML = '&larr; Back to Articles';
-                backButton.addEventListener('click', renderFeed);
-
-                const wrapper = document.createElement('div');
-                wrapper.className = 'iframe-wrapper';
-
-                const content = document.createElement("iframe");
-                
-                content.srcdoc = `
-                    <!DOCTYPE html>
-                    <html>
-                    <head>${iframeStyles}</head>
-                    <body>
-                        <h1>${blog.title || 'No title'}</h1>
-                        ${blog.content || ''}
-                    </body>
-                    </html>
-                `;
-
-                wrapper.appendChild(content);
-                container.appendChild(backButton);
-                container.appendChild(wrapper);
+                renderBlog(blog);
             });
 
             container.appendChild(postElement);
         });
     }
 
-    renderFeed();
+    function renderBlog(blog, updateUrl = true) {
+        if (updateUrl) {
+            setBlogInUrl(blog.id);
+        }
+
+        searchContainer.hidden = true;
+        container.innerHTML = '';
+
+        const backButton = document.createElement('div');
+        backButton.className = 'back-link';
+        backButton.innerHTML = '&larr; Back to Articles';
+        backButton.addEventListener('click', () => {
+            setBlogInUrl(null);
+            renderFeed();
+        });
+
+        const shareButton = document.createElement('button');
+        shareButton.className = 'share-button';
+        shareButton.type = 'button';
+        shareButton.textContent = 'Share';
+
+        const shareStatus = document.createElement('span');
+        shareStatus.className = 'share-status';
+        shareStatus.setAttribute('aria-live', 'polite');
+
+        shareButton.addEventListener('click', async () => {
+            try {
+                if (navigator.share) {
+                    await navigator.share({
+                        title: blog.title,
+                        url: window.location.href
+                    });
+                    shareStatus.textContent = 'Shared!';
+                } else {
+                    await navigator.clipboard.writeText(window.location.href);
+                    shareStatus.textContent = 'Link copied!';
+                }
+            } catch (error) {
+                if (error.name !== 'AbortError') {
+                    shareStatus.textContent = 'Could not share this link.';
+                }
+            }
+        });
+
+        const actions = document.createElement('div');
+        actions.className = 'blog-actions';
+        actions.append(backButton, shareButton, shareStatus);
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'iframe-wrapper';
+
+        const content = document.createElement("iframe");
+
+        content.srcdoc = `
+            <!DOCTYPE html>
+            <html>
+            <head>${iframeStyles}</head>
+            <body>
+                <h1>${blog.title || 'No title'}</h1>
+                ${blog.content || ''}
+            </body>
+            </html>
+        `;
+
+        wrapper.appendChild(content);
+        container.appendChild(actions);
+        container.appendChild(wrapper);
+    }
+
+    const requestedBlogId = new URLSearchParams(window.location.search).get('blog');
+    const requestedBlog = BLOGS.find(blog => blog.id === requestedBlogId);
+
+    if (requestedBlog) {
+        renderBlog(requestedBlog, false);
+    } else {
+        renderFeed();
+    }
 
 
     // the user can either click the button or press enter to search for posts
