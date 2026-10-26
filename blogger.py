@@ -3,6 +3,7 @@ import markdown
 import sys
 import os
 from datetime import date
+from pathlib import Path
 import json
 
 # guard clauses
@@ -17,17 +18,23 @@ if not os.path.exists(given_file):
 if os.path.getsize(given_file) == 0:
     print(f"File {given_file} is empty."); sys.exit(1)
 
+# if extension isn't .md
+# we let the user choose to keep going, however, because extensions are just a construct.
+if not Path(given_file).suffix == ".md":
+    print("Looks like you didn't pass in a markdown file."
+          "Are you sure you want to use this file? File: ", given_file)
+    if input("Are you sure? [y/n] ") != "y":
+        sys.exit(1)
+
 # markdown to html
 def get_html(file):
     return markdown.markdown(open(file).read())
 
 
 # if not being run in the right directory
-# if not os.path.exists("blogs.json"):
-#     print("Blogger is intended to be ran in the blogs directory."
-#           "Please cd into that directory and then rerun Blogger."
-#           "\n\nYour new HTML file will still be generated.")
-#     print(get_html(given_file)); sys.exit(0)
+if not os.path.exists("../blogs.json"):
+    print("Blogger is intended to be ran in the blogs directory."
+        "Please cd into that directory and then rerun Blogger.")
 
 
 def get_id_from_title(title):
@@ -42,13 +49,14 @@ date = date.today().strftime('%Y-%m-%d')
 post_id = get_id_from_title(given_title)
 content = get_html(given_file)
 tags = tags.split(",")
+tags = [tag.capitalize() for tag in tags]
 
 post = {
     "id": post_id,
     "title": given_title,
     "date": date,
     "tags": tags,
-    content: content
+    "content": content
 }
 
 print("Post:")
@@ -57,12 +65,25 @@ print(post)
 # append post to blogs
 
 # read
-with open("blogs.json", "r") as f:
+with open("../blogs.json", "r") as f:
     blogs_content = json.load(f)
 
 # append post to the blogs array
-blogs_content["blogs"].append(post)
+blogs = blogs_content["blogs"]
+
+# check for a duplicate post
+for blog in blogs:
+    if blog["id"] == post_id:
+        print("Looks like you're trying to upload a duplicate post.")
+        print("A post with that ID already exists.")
+        sys.exit(1)
+
+blogs.append(post)
 
 # # write
-with open("blogs.json", "w") as f:
+with open("../blogs.json", "w") as f:
     json.dump(blogs_content, f, indent=2)
+
+
+print("Successfully uploaded post!"
+      "The next steps are to run `git add .`, `git commit -m 'added post'`, and `git push`")

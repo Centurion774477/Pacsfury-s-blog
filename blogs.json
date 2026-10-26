@@ -1,0 +1,11 @@
+{
+  "blogs": [
+    {
+      "id": "adding-tags",
+      "title": "Adding Tags",
+      "date": "2026-10-12",
+      "tags": ["Announcement"],
+      "content": "Hello, this is my first blog post!"
+    }
+  ]
+}
