@@ -14,6 +14,8 @@ given_file = sys.argv[1]
 if not os.path.exists(given_file):
     print(f"File {given_file} does not exist."); sys.exit(1)
 
+if os.path.getsize(given_file) == 0:
+    print(f"File {given_file} is empty."); sys.exit(1)
 
 # markdown to html
 def get_html(file):
@@ -52,15 +54,15 @@ post = {
 print("Post:")
 print(post)
 
-# # append post to blogs
-#
-# # read
-# with open("blogs.json", "r") as f:
-#     blogs_content = json.load(f)
-#
-# # append
-# blogs_content.append(post)
-#
+# append post to blogs
+
+# read
+with open("blogs.json", "r") as f:
+    blogs_content = json.load(f)
+
+# append post to the blogs array
+blogs_content["blogs"].append(post)
+
 # # write
-# with open("blogs.json", "w") as f:
-#     json.dump(blogs_content, f, indent=2)
+with open("blogs.json", "w") as f:
+    json.dump(blogs_content, f, indent=2)
