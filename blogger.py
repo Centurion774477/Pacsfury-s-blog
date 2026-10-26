@@ -32,7 +32,7 @@ def get_html(file):
 
 
 # if not being run in the right directory
-if not os.path.exists("../blogs.json"):
+if not os.path.exists("blogs.json"):
     print("Blogger is intended to be ran in the blogs directory."
         "Please cd into that directory and then rerun Blogger.")
 
@@ -43,6 +43,7 @@ def get_id_from_title(title):
 
 # gather information
 given_title = input("What would you like to title this post?\n~> ")
+# todo add a way to skip this; attach no tags
 tags  = input("List the tags you would like to attach, separated by a comma.\n~> ")
 
 date = date.today().strftime('%Y-%m-%d')
@@ -65,7 +66,7 @@ print(post)
 # append post to blogs
 
 # read
-with open("../blogs.json", "r") as f:
+with open("blogs.json", "r") as f:
     blogs_content = json.load(f)
 
 # append post to the blogs array
@@ -81,7 +82,7 @@ for blog in blogs:
 blogs.append(post)
 
 # # write
-with open("../blogs.json", "w") as f:
+with open("blogs.json", "w") as f:
     json.dump(blogs_content, f, indent=2)
 
 

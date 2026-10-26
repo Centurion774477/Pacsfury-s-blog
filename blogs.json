@@ -4,8 +4,19 @@
       "id": "adding-tags",
       "title": "Adding Tags",
       "date": "2026-10-12",
-      "tags": ["Announcement"],
+      "tags": [
+        "Announcement"
+      ],
       "content": "Hello, this is my first blog post!"
+    },
+    {
+      "id": "blogger",
+      "title": "blogger",
+      "date": "2026-10-26",
+      "tags": [
+        "Announcement"
+      ],
+      "content": "<p>Hey, this is testing Blogger!</p>"
     }
   ]
 }
